@@ -1,0 +1,15 @@
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\bin\Debug\net6.0\SistemaDeUniversidad.exe
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\bin\Debug\net6.0\SistemaDeUniversidad.deps.json
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\bin\Debug\net6.0\SistemaDeUniversidad.runtimeconfig.json
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\bin\Debug\net6.0\SistemaDeUniversidad.dll
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\bin\Debug\net6.0\SistemaDeUniversidad.pdb
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\obj\Debug\net6.0\SistemaDeUniversidad.csproj.AssemblyReference.cache
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\obj\Debug\net6.0\SistemaDeUniversidad.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\obj\Debug\net6.0\SistemaDeUniversidad.AssemblyInfoInputs.cache
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\obj\Debug\net6.0\SistemaDeUniversidad.AssemblyInfo.cs
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\obj\Debug\net6.0\SistemaDeUniversidad.csproj.CoreCompileInputs.cache
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\obj\Debug\net6.0\SistemaDeUniversidad.dll
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\obj\Debug\net6.0\refint\SistemaDeUniversidad.dll
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\obj\Debug\net6.0\SistemaDeUniversidad.pdb
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\obj\Debug\net6.0\SistemaDeUniversidad.genruntimeconfig.cache
+C:\Users\Mateo\Desktop\SistemaDeUniversidad\SistemaDeUniversidad\obj\Debug\net6.0\ref\SistemaDeUniversidad.dll
