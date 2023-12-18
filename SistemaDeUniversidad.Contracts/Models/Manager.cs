@@ -1,15 +1,12 @@
-﻿using SistemadeUniversidad.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Npgsql;
 
 
-namespace SistemaDeUniversidad.Entities
+namespace SistemadeUniversidad.Contracts.Models
 {
-
     public class Manager
     {
         public List<Profesor> listaProfesor;
@@ -30,7 +27,7 @@ namespace SistemaDeUniversidad.Entities
         #region CREADORES
 
         //ESTO SE ENCARGA DE CREAR PROFESORES
-        public async void CrearProfesor(NpgsqlDataSource dataSource)
+        public void CrearProfesor()
         {
             string? nombre = null;
 
@@ -45,25 +42,9 @@ namespace SistemaDeUniversidad.Entities
                 }
             }
 
-            using var command = dataSource.CreateCommand($"INSERT INTO universidad.profesores(nombre) VALUES ('{nombre}')");
-            using var inserter = command.ExecuteNonQueryAsync();
-
             Profesor nuevoProfesor = new Profesor(nombre, idContadorProfesores);
             idContadorProfesores++;
             listaProfesor.Add(nuevoProfesor);
-
-            /*
-            Profesor nuevoProfesor = new Profesor(nombre, idContadorProfesores);
-            await using var cmd = new NpgsqlCommand($"INSERT INTO universidad.profesores(nombre) VALUES ('{nombre}')")
-            {
-                Parameters =
-                {
-                    new() {Value = nuevoProfesor.nombre}
-                }
-            };
-
-            await cmd.ExecuteNonQueryAsync();*/
-
             Console.WriteLine($"Profesor {nuevoProfesor.nombre} con el id {nuevoProfesor.id} agregado.");
             Console.WriteLine($"{listaProfesor.Count()} es el numero total de items en la lista de profesores");
         }
@@ -208,11 +189,6 @@ namespace SistemaDeUniversidad.Entities
             profesor.InscribirEnMaterias(materia);
             Console.WriteLine($"El profesor {profesor.nombre} se ha inscrito en la materia {materia.nombre}");
             return true;
-        }
-
-        internal void CrearProfesor(NpgsqlCommand command)
-        {
-            throw new NotImplementedException();
         }
         #endregion
     }

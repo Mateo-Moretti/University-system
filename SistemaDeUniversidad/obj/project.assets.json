@@ -135,6 +135,16 @@
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
+      },
+      "SistemaDeUniversidad.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/SistemaDeUniversidad.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SistemaDeUniversidad.Contracts.dll": {}
+        }
       }
     }
   },
@@ -428,11 +438,17 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "SistemaDeUniversidad.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../SistemaDeUniversidad.Contracts/SistemaDeUniversidad.Contracts.csproj",
+      "msbuildProject": "../SistemaDeUniversidad.Contracts/SistemaDeUniversidad.Contracts.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Npgsql >= 8.0.1"
+      "Npgsql >= 8.0.1",
+      "SistemaDeUniversidad.Contracts >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -466,7 +482,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Contracts\\SistemaDeUniversidad.Contracts.csproj": {
+              "projectPath": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Contracts\\SistemaDeUniversidad.Contracts.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

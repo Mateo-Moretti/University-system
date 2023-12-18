@@ -5,9 +5,9 @@ VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaDeUniversidad", "SistemaDeUniversidad\SistemaDeUniversidad.csproj", "{B7355E27-6347-4A24-8CCA-3EC71F35D57D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaDeUniversidad.Contracts", "SistemaDeUniversidad.Contracts\SistemaDeUniversidad.Contracts.csproj", "{29CD8EF8-EE16-4B91-B733-E67FF9AFA6CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaDeUniversidad.Contracts", "SistemaDeUniversidad.Contracts\SistemaDeUniversidad.Contracts.csproj", "{29CD8EF8-EE16-4B91-B733-E67FF9AFA6CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaDeUniversidad.Persistance", "SistemaDeUniversidad.Persistance\SistemaDeUniversidad.Persistance.csproj", "{2A40E3F0-6217-4122-AC6A-FBF6B8D45ED5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaDeUniversidad.Persistance", "SistemaDeUniversidad.Persistance\SistemaDeUniversidad.Persistance.csproj", "{2A40E3F0-6217-4122-AC6A-FBF6B8D45ED5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SistemaDeUniversidad.Persistance.Repositories
 {
-    internal class ProfesorRepository
+    public class ProfesorRepository
     {
     }
 }

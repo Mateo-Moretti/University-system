@@ -1,9 +1,7 @@
-﻿using SistemaDeUniversidad.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
-
-using Npgsql;
-using SistemadeUniversidad.Entities;
+using SistemadeUniversidad.Contracts;
+using SistemadeUniversidad.Contracts.Models;
 
 public class Program
 {
@@ -11,15 +9,6 @@ public class Program
   
     static void Main(string[] args)
     {
-        //SQL
-        string connectionString = "Host=127.0.0.1;Username=postgres;Password=2007;Database=postgres";
-        using NpgsqlDataSource dataSource = NpgsqlDataSource.Create(connectionString);
-
-        using var command = dataSource.CreateCommand("SELECT nombre, edad, dni, id FROM public.personas");
-        using var reader = command.ExecuteReader();
-        //SQL
-
-
         while (true)
         {
             Console.WriteLine(" ");
@@ -218,3 +207,4 @@ public class Program
     
     }
 }
+
