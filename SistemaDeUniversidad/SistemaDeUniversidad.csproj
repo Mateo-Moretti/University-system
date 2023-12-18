@@ -11,4 +11,9 @@
     <PackageReference Include="Npgsql" Version="8.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SistemaDeUniversidad.Contracts\SistemaDeUniversidad.Contracts.csproj" />
+    <ProjectReference Include="..\SistemaDeUniversidad.Persistance\SistemaDeUniversidad.Persistance.csproj" />
+  </ItemGroup>
+
 </Project>

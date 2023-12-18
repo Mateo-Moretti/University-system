@@ -1,0 +1,15 @@
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\bin\Debug\net6.0\SistemaDeUniversidad.Persistance.deps.json
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\bin\Debug\net6.0\SistemaDeUniversidad.Persistance.dll
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\bin\Debug\net6.0\SistemaDeUniversidad.Persistance.pdb
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\bin\Debug\net6.0\SistemaDeUniversidad.Contracts.dll
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\bin\Debug\net6.0\SistemaDeUniversidad.Contracts.pdb
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\obj\Debug\net6.0\SistemaDeUniversidad.Persistance.csproj.AssemblyReference.cache
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\obj\Debug\net6.0\SistemaDeUniversidad.Persistance.GeneratedMSBuildEditorConfig.editorconfig
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\obj\Debug\net6.0\SistemaDeUniversidad.Persistance.AssemblyInfoInputs.cache
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\obj\Debug\net6.0\SistemaDeUniversidad.Persistance.AssemblyInfo.cs
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\obj\Debug\net6.0\SistemaDeUniversidad.Persistance.csproj.CoreCompileInputs.cache
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\obj\Debug\net6.0\SistemaDeUniversidad.Persistance.csproj.CopyComplete
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\obj\Debug\net6.0\SistemaDeUniversidad.Persistance.dll
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\obj\Debug\net6.0\refint\SistemaDeUniversidad.Persistance.dll
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\obj\Debug\net6.0\SistemaDeUniversidad.Persistance.pdb
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Persistance\obj\Debug\net6.0\ref\SistemaDeUniversidad.Persistance.dll

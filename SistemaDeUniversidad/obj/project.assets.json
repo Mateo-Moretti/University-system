@@ -145,6 +145,20 @@
         "runtime": {
           "bin/placeholder/SistemaDeUniversidad.Contracts.dll": {}
         }
+      },
+      "SistemaDeUniversidad.Persistance/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Npgsql": "8.0.1",
+          "SistemaDeUniversidad.Contracts": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SistemaDeUniversidad.Persistance.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SistemaDeUniversidad.Persistance.dll": {}
+        }
       }
     }
   },
@@ -443,12 +457,18 @@
       "type": "project",
       "path": "../SistemaDeUniversidad.Contracts/SistemaDeUniversidad.Contracts.csproj",
       "msbuildProject": "../SistemaDeUniversidad.Contracts/SistemaDeUniversidad.Contracts.csproj"
+    },
+    "SistemaDeUniversidad.Persistance/1.0.0": {
+      "type": "project",
+      "path": "../SistemaDeUniversidad.Persistance/SistemaDeUniversidad.Persistance.csproj",
+      "msbuildProject": "../SistemaDeUniversidad.Persistance/SistemaDeUniversidad.Persistance.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Npgsql >= 8.0.1",
-      "SistemaDeUniversidad.Contracts >= 1.0.0"
+      "SistemaDeUniversidad.Contracts >= 1.0.0",
+      "SistemaDeUniversidad.Persistance >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -485,6 +505,9 @@
           "projectReferences": {
             "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Contracts\\SistemaDeUniversidad.Contracts.csproj": {
               "projectPath": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Contracts\\SistemaDeUniversidad.Contracts.csproj"
+            },
+            "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Persistance\\SistemaDeUniversidad.Persistance.csproj": {
+              "projectPath": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Persistance\\SistemaDeUniversidad.Persistance.csproj"
             }
           }
         }

@@ -8,7 +8,9 @@
     ".NETCoreApp,Version=v6.0": {
       "SistemaDeUniversidad/1.0.0": {
         "dependencies": {
-          "Npgsql": "8.0.1"
+          "Npgsql": "8.0.1",
+          "SistemaDeUniversidad.Contracts": "1.0.0",
+          "SistemaDeUniversidad.Persistance": "1.0.0"
         },
         "runtime": {
           "SistemaDeUniversidad.dll": {}
@@ -89,6 +91,20 @@
             "fileVersion": "8.0.23.53103"
           }
         }
+      },
+      "SistemaDeUniversidad.Contracts/1.0.0": {
+        "runtime": {
+          "SistemaDeUniversidad.Contracts.dll": {}
+        }
+      },
+      "SistemaDeUniversidad.Persistance/1.0.0": {
+        "dependencies": {
+          "Npgsql": "8.0.1",
+          "SistemaDeUniversidad.Contracts": "1.0.0"
+        },
+        "runtime": {
+          "SistemaDeUniversidad.Persistance.dll": {}
+        }
       }
     }
   },
@@ -146,6 +162,16 @@
       "sha512": "sha512-OdrZO2WjkiEG6ajEFRABTRCi/wuXQPxeV6g8xvUJqdxMvvuCCEk86zPla8UiIQJz3durtUEbNyY/3lIhS0yZvQ==",
       "path": "system.text.json/8.0.0",
       "hashPath": "system.text.json.8.0.0.nupkg.sha512"
+    },
+    "SistemaDeUniversidad.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SistemaDeUniversidad.Persistance/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -16,7 +16,6 @@ namespace SistemadeUniversidad.Contracts.Models
         private int idContadorMaterias = 1;
         private int idContadorAlumnos = 1;
         private int idContadorProfesores = 1;
-
         public Manager()
         {
             listaProfesor = new List<Profesor>();
@@ -52,24 +51,7 @@ namespace SistemadeUniversidad.Contracts.Models
         //ESTO SE ENCARGA DE CREAR ALUMNOS
         public void CrearAlumnos()
         {
-            string? nombre = null;
-
-            while (string.IsNullOrEmpty(nombre))
-            {
-                Console.Write("Nombre del alumno: ");
-                nombre = Console.ReadLine();
-
-                if (string.IsNullOrEmpty(nombre))
-                {
-                    Console.WriteLine("Nombre del alumno no puede estar vacio");
-                }
-            }
-
-            Alumno nuevoAlumno = new Alumno(nombre, idContadorAlumnos);
-            idContadorAlumnos++;
-            listaAlumnos.Add(nuevoAlumno);
-            Console.WriteLine($"Alumno {nuevoAlumno.nombre} con el id {nuevoAlumno.id} agregado.");
-            Console.WriteLine($"{listaAlumnos.Count()} es el numero total de items en la lista de alumnos");
+            
         }
 
         //ESTO SE ENCARGA DE CREAR MATERIAS

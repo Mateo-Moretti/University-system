@@ -1,0 +1,11 @@
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Contracts\bin\Debug\net6.0\SistemaDeUniversidad.Contracts.deps.json
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Contracts\bin\Debug\net6.0\SistemaDeUniversidad.Contracts.dll
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Contracts\bin\Debug\net6.0\SistemaDeUniversidad.Contracts.pdb
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Contracts\obj\Debug\net6.0\SistemaDeUniversidad.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Contracts\obj\Debug\net6.0\SistemaDeUniversidad.Contracts.AssemblyInfoInputs.cache
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Contracts\obj\Debug\net6.0\SistemaDeUniversidad.Contracts.AssemblyInfo.cs
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Contracts\obj\Debug\net6.0\SistemaDeUniversidad.Contracts.csproj.CoreCompileInputs.cache
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Contracts\obj\Debug\net6.0\SistemaDeUniversidad.Contracts.dll
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Contracts\obj\Debug\net6.0\refint\SistemaDeUniversidad.Contracts.dll
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Contracts\obj\Debug\net6.0\SistemaDeUniversidad.Contracts.pdb
+B:\Users\mateo\Desktop\TAREA5 Universidad\SistemaDeUniversidad.Contracts\obj\Debug\net6.0\ref\SistemaDeUniversidad.Contracts.dll

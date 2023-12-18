@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using SistemadeUniversidad.Contracts;
 using SistemadeUniversidad.Contracts.Models;
+using SistemaDeUniversidad.Persistance;
+using SistemadeUniversidad;
 
 public class Program
 {
     static Manager manager = new Manager();
-  
-    static void Main(string[] args)
+
+    public static List<Alumno> listaAlumnos = new List<Alumno>();
+    public static int id = 1;
+
+    static void Main()
     {
+
         while (true)
         {
             Console.WriteLine(" ");
@@ -48,7 +54,7 @@ public class Program
             switch (opcion)
             {
                 case "1":
-                    AgregarProfesor(dataSource);
+                    AgregarProfesor();
                     break;
 
                 case "2":
@@ -93,14 +99,34 @@ public class Program
         }
 
         #region CREADORES
-        static void AgregarProfesor(NpgsqlDataSource dataSource)
+        static void AgregarProfesor()
         {
-            manager.CrearProfesor(dataSource);           
+            manager.CrearProfesor();            
         }
     
         static void AgregarAlumno()
         {
-            manager.CrearAlumnos();
+            string? nombre = null;
+
+            while (string.IsNullOrEmpty(nombre))
+            {
+                Console.Write("Nombre del alumno: ");
+                nombre = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(nombre))
+                {
+                    Console.WriteLine("Nombre del alumno no puede estar vacio");
+                }
+            }
+
+            Alumno nuevoAlumno = new Alumno(nombre, id);
+            id++;
+            listaAlumnos.Add(nuevoAlumno);
+
+            DataBase.Alumnos.CreateAsync(nuevoAlumno, nombre, id);
+
+            Console.WriteLine($"Alumno {nuevoAlumno.nombre} con el id {nuevoAlumno.id} agregado.");
+            Console.WriteLine($"{listaAlumnos.Count()} es el numero total de items en la lista de alumnos");
         }
         
         static void CrearMateria()
