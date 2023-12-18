@@ -1,34 +1,36 @@
-﻿using SistemadeUniversidad;
-using SistemadeUniversidad.Otros;
+﻿using SistemadeUniversidad.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Npgsql;
 
-namespace SistemaDeUniversidad.Main
+
+namespace SistemaDeUniversidad.Entities
 {
+
     public class Manager
     {
-        public CustomList<Profesor> listaProfesor;
-        public CustomList<Alumno> listaAlumnos;
-        public CustomList<Materia> listaMaterias;
+        public List<Profesor> listaProfesor;
+        public List<Alumno> listaAlumnos;
+        public List<Materia> listaMaterias;
 
         private int idContadorMaterias = 1;
         private int idContadorAlumnos = 1;
         private int idContadorProfesores = 1;
-        
+
         public Manager()
         {
-            listaProfesor = new CustomList<Profesor>();
-            listaAlumnos = new CustomList<Alumno>();
-            listaMaterias = new CustomList<Materia>();
+            listaProfesor = new List<Profesor>();
+            listaAlumnos = new List<Alumno>();
+            listaMaterias = new List<Materia>();
         }
 
         #region CREADORES
 
         //ESTO SE ENCARGA DE CREAR PROFESORES
-        public void CrearProfesor()
+        public async void CrearProfesor(NpgsqlDataSource dataSource)
         {
             string? nombre = null;
 
@@ -43,11 +45,27 @@ namespace SistemaDeUniversidad.Main
                 }
             }
 
+            using var command = dataSource.CreateCommand($"INSERT INTO universidad.profesores(nombre) VALUES ('{nombre}')");
+            using var inserter = command.ExecuteNonQueryAsync();
+
             Profesor nuevoProfesor = new Profesor(nombre, idContadorProfesores);
             idContadorProfesores++;
             listaProfesor.Add(nuevoProfesor);
+
+            /*
+            Profesor nuevoProfesor = new Profesor(nombre, idContadorProfesores);
+            await using var cmd = new NpgsqlCommand($"INSERT INTO universidad.profesores(nombre) VALUES ('{nombre}')")
+            {
+                Parameters =
+                {
+                    new() {Value = nuevoProfesor.nombre}
+                }
+            };
+
+            await cmd.ExecuteNonQueryAsync();*/
+
             Console.WriteLine($"Profesor {nuevoProfesor.nombre} con el id {nuevoProfesor.id} agregado.");
-            Console.WriteLine($"{listaProfesor.ElementosTotales()} es el numero total de items en la lista de profesores");
+            Console.WriteLine($"{listaProfesor.Count()} es el numero total de items en la lista de profesores");
         }
         
         //ESTO SE ENCARGA DE CREAR ALUMNOS
@@ -70,7 +88,7 @@ namespace SistemaDeUniversidad.Main
             idContadorAlumnos++;
             listaAlumnos.Add(nuevoAlumno);
             Console.WriteLine($"Alumno {nuevoAlumno.nombre} con el id {nuevoAlumno.id} agregado.");
-            Console.WriteLine($"{listaAlumnos.ElementosTotales()} es el numero total de items en la lista de alumnos");
+            Console.WriteLine($"{listaAlumnos.Count()} es el numero total de items en la lista de alumnos");
         }
 
         //ESTO SE ENCARGA DE CREAR MATERIAS
@@ -93,7 +111,7 @@ namespace SistemaDeUniversidad.Main
             idContadorMaterias++;
             listaMaterias.Add(nuevaMateria);
             Console.WriteLine($"Materia {nuevaMateria.nombre} con id {nuevaMateria.id} agregada.");
-            Console.WriteLine($"{listaMaterias.ElementosTotales()} es el numero total de items en la lista de materias");
+            Console.WriteLine($"{listaMaterias.Count()} es el numero total de items en la lista de materias");
         }
         #endregion
 
@@ -160,7 +178,7 @@ namespace SistemaDeUniversidad.Main
             }
 
             //Fijarse el limite de materias inscritas
-            if (alumno.ObtenerMateriasInscritas().ElementosTotales() >= 2)
+            if (alumno.ObtenerMateriasInscritas().Count() >= 2)
             {
                 Console.WriteLine($"El alumno {alumno.nombre} ya esta inscrito en 2 materias.");
                 return false;
@@ -181,7 +199,7 @@ namespace SistemaDeUniversidad.Main
             }
 
             //Fijarse el limite de materias inscritas
-            if (profesor.ObtenerMateriasInscritas().ElementosTotales() >= 1)
+            if (profesor.ObtenerMateriasInscritas().Count() >= 1)
             {
                 Console.WriteLine($"El profesor {profesor.nombre} ya esta inscrito en 1 materia.");
                 return false;
@@ -190,6 +208,11 @@ namespace SistemaDeUniversidad.Main
             profesor.InscribirEnMaterias(materia);
             Console.WriteLine($"El profesor {profesor.nombre} se ha inscrito en la materia {materia.nombre}");
             return true;
+        }
+
+        internal void CrearProfesor(NpgsqlCommand command)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

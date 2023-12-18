@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "LmZy8pJttu59w4tXkW0WnK2mzKbrE0ZrbNSFwMWJ5ZGV8N14RURFW07CR2zxp0HzEFfWwoOvtgKvHhLohPZVLg==",
+  "dgSpecHash": "95kfYgHYFymZ7p/TouflkkOK7ZiQkQL2dsa0lN5+78MiC2ErUF3C9anEFU1ofMW5FEDvuY4Q/b9S/cyilvTPDQ==",
   "success": true,
-  "projectFilePath": "B:\\Users\\mateo\\Documents\\FullStack\\SistemaDeUniversidad 2.0\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mateo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\mateo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\mateo\\.nuget\\packages\\npgsql\\8.0.1\\npgsql.8.0.1.nupkg.sha512",
+    "C:\\Users\\mateo\\.nuget\\packages\\system.diagnostics.diagnosticsource\\8.0.0\\system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512",
+    "C:\\Users\\mateo\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\mateo\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\mateo\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "B:\\Users\\mateo\\Documents\\FullStack\\SistemaDeUniversidad 2.0\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj": {}
+    "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj": {}
   },
   "projects": {
-    "B:\\Users\\mateo\\Documents\\FullStack\\SistemaDeUniversidad 2.0\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj": {
+    "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "B:\\Users\\mateo\\Documents\\FullStack\\SistemaDeUniversidad 2.0\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj",
+        "projectUniqueName": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj",
         "projectName": "SistemaDeUniversidad",
-        "projectPath": "B:\\Users\\mateo\\Documents\\FullStack\\SistemaDeUniversidad 2.0\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj",
+        "projectPath": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj",
         "packagesPath": "C:\\Users\\mateo\\.nuget\\packages\\",
-        "outputPath": "B:\\Users\\mateo\\Documents\\FullStack\\SistemaDeUniversidad 2.0\\SistemaDeUniversidad\\obj\\",
+        "outputPath": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +43,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Npgsql": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

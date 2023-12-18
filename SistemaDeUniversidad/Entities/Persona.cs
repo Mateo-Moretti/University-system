@@ -1,21 +1,21 @@
-﻿using SistemadeUniversidad.Otros;
+﻿using SistemadeUniversidad.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemadeUniversidad
+namespace SistemaDeUniversidad.Entities
 {
-    public class Materia 
+    public abstract class Persona
     {
         public string nombre;
         public int id;
-   
-        public Materia(string nombre, int id)
-        {          
+
+        public Persona(string nombre, int id)
+        {
+            this.nombre = nombre;
             this.id = id;
-            this.nombre = nombre;          
         }
     }
 }

@@ -1,14 +1,25 @@
-﻿using SistemadeUniversidad;
-using SistemadeUniversidad.Otros;
-using SistemaDeUniversidad.Main;
+﻿using SistemaDeUniversidad.Entities;
 using System;
 using System.Collections.Generic;
 
-class Program
+using Npgsql;
+using SistemadeUniversidad.Entities;
+
+public class Program
 {
     static Manager manager = new Manager();
+  
     static void Main(string[] args)
     {
+        //SQL
+        string connectionString = "Host=127.0.0.1;Username=postgres;Password=2007;Database=postgres";
+        using NpgsqlDataSource dataSource = NpgsqlDataSource.Create(connectionString);
+
+        using var command = dataSource.CreateCommand("SELECT nombre, edad, dni, id FROM public.personas");
+        using var reader = command.ExecuteReader();
+        //SQL
+
+
         while (true)
         {
             Console.WriteLine(" ");
@@ -48,7 +59,7 @@ class Program
             switch (opcion)
             {
                 case "1":
-                    AgregarProfesor();
+                    AgregarProfesor(dataSource);
                     break;
 
                 case "2":
@@ -93,9 +104,9 @@ class Program
         }
 
         #region CREADORES
-        static void AgregarProfesor()
+        static void AgregarProfesor(NpgsqlDataSource dataSource)
         {
-            manager.CrearProfesor();
+            manager.CrearProfesor(dataSource);           
         }
     
         static void AgregarAlumno()

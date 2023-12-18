@@ -1,17 +1,17 @@
-﻿using SistemadeUniversidad.Otros;
-using SistemaDeUniversidad.Main;
+﻿using SistemaDeUniversidad.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemadeUniversidad
+namespace SistemadeUniversidad.Entities
 {
     public class Alumno : Persona
-    {
-        private CustomList<Materia> listaMateriasInscritas = new CustomList<Materia>();
- 
+    {       
+        private List<Materia> listaMateriasInscritas = new List<Materia>();
+
+
         public Alumno(string nombre, int id) : base (nombre , id)
         {
            
@@ -23,7 +23,7 @@ namespace SistemadeUniversidad
             
         }
 
-        public CustomList<Materia> ObtenerMateriasInscritas()
+        public List<Materia> ObtenerMateriasInscritas()
         {
             return listaMateriasInscritas;
         }
