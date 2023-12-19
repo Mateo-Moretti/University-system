@@ -215,6 +215,7 @@ public class Program
                     Console.WriteLine($"El alumno {alumno.nombre} ya esta inscrito en 2 materias.");
                 }
                 alumno.InscribirEnMaterias(materia);
+                DataBase.Alumnos.InscribirAMateria(idAlumno, idMateria);
                 Console.WriteLine($"El alumno {alumno.nombre} se ha inscrito en la materia {materia.nombre}");
             }
             else
@@ -261,6 +262,7 @@ public class Program
                     Console.WriteLine($"El alumno {profesor.nombre} ya esta inscrito en 1 materia.");
                 }
                 profesor.InscribirEnMaterias(materia);
+                DataBase.Profesores.InscribirAMateria(idProfesor, idMateria);
                 Console.WriteLine($"El profesor {profesor.nombre} se ha inscrito en la materia {materia.nombre}");
             }
             else
@@ -322,11 +324,6 @@ public class Program
             return null;
         }
         #endregion
-
-
-
-
-
 
 
 

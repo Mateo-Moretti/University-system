@@ -11,15 +11,11 @@ namespace SistemadeUniversidad.Contracts.Models
     {
         private List<Materia> listaMateriasInscritas = new List<Materia>();
 
-        public Profesor(string nombre, int id) : base(nombre, id)
-        {
-
-        }
+        public Profesor(string nombre, int id) : base(nombre, id){}
 
         public void InscribirEnMaterias(Materia materia)
         {
             listaMateriasInscritas.Add(materia);
-
         }
 
         public List<Materia> ObtenerMateriasInscritas()

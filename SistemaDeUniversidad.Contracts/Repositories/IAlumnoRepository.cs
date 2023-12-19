@@ -10,5 +10,6 @@ namespace SistemaDeUniversidad.Contracts.Repositories
     public interface IAlumnoRepository
     {
         Task CreateAsync(Alumno alumno, string nombre, int id);
+        Task InscribirAMateria(int idAlumno, int idMateria);
     }
 }

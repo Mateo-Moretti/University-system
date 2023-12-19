@@ -11,5 +11,6 @@ namespace SistemaDeUniversidad.Contracts.Repositories
     public interface IProfesorRepository
     {
         Task CreateAsync(Profesor profesor, string nombre, int id);
+        Task InscribirAMateria(int idProfesor, int idMateria);
     }
 }

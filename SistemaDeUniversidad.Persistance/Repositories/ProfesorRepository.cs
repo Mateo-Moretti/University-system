@@ -24,5 +24,11 @@ namespace SistemaDeUniversidad.Persistance.Repositories
             using var cmd = _dataSource.CreateCommand($"INSERT INTO universidad.profesores(nombre, id) VALUES ('{nombre}', '{id}')");
             await cmd.ExecuteNonQueryAsync();
         }
+
+        public async Task InscribirAMateria(int idProfesor, int idMateria)
+        {
+            using var cmd = _dataSource.CreateCommand($"INSERT INTO universidad.profesores_dictan(profesor_id, materia_id) VALUES ('{idProfesor}', '{idMateria}')");
+            await cmd.ExecuteNonQueryAsync();
+        }
     }
 }
