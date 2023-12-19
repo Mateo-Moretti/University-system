@@ -9,6 +9,6 @@ namespace SistemaDeUniversidad.Contracts.Repositories
 {
     public interface IAlumnoRepository
     {
-        void CreateAsync(Alumno alumno, string nombre, int id);
+        Task CreateAsync(Alumno alumno, string nombre, int id);
     }
 }

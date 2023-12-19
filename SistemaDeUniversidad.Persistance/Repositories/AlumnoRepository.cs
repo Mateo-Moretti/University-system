@@ -20,7 +20,7 @@ namespace SistemaDeUniversidad.Persistance.Repositories
             _dataSource = dataSource;
         }
 
-        public async void CreateAsync(Alumno alumno, string nombre, int id)
+        public async Task CreateAsync(Alumno alumno, string nombre, int id)
         {
             using var cmd = _dataSource.CreateCommand($"INSERT INTO universidad.alumnos(nombre, id) VALUES ('{nombre}', '{id}')");
             await cmd.ExecuteNonQueryAsync();

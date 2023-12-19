@@ -10,7 +10,9 @@ public class Program
     static Manager manager = new Manager();
 
     public static List<Alumno> listaAlumnos = new List<Alumno>();
-    public static int id = 1;
+    public static List<Profesor> listaProfesor = new List<Profesor>();
+    public static int idContadorAlumnos = 1;
+    public static int idContadorProfesores = 1;
 
     static void Main()
     {
@@ -101,7 +103,28 @@ public class Program
         #region CREADORES
         static void AgregarProfesor()
         {
-            manager.CrearProfesor();            
+            string? nombre = null;
+
+            while (string.IsNullOrEmpty(nombre))
+            {
+                Console.Write("Nombre del profesor: ");
+                nombre = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(nombre))
+                {
+                    Console.WriteLine("Nombre del profesor no puede estar vacio");
+                }
+            }
+
+            Profesor nuevoProfesor = new Profesor(nombre, idContadorProfesores);
+            listaProfesor.Add(nuevoProfesor);
+
+            DataBase.Profesores.CreateAsync(nuevoProfesor, nombre, idContadorProfesores);
+
+            idContadorProfesores++;
+
+            Console.WriteLine($"Profesor {nuevoProfesor.nombre} con el id {nuevoProfesor.id} agregado.");
+            Console.WriteLine($"{listaProfesor.Count()} es el numero total de items en la lista de profesores");
         }
     
         static void AgregarAlumno()
@@ -119,11 +142,12 @@ public class Program
                 }
             }
 
-            Alumno nuevoAlumno = new Alumno(nombre, id);
-            id++;
+            Alumno nuevoAlumno = new Alumno(nombre, idContadorAlumnos);           
             listaAlumnos.Add(nuevoAlumno);
 
-            DataBase.Alumnos.CreateAsync(nuevoAlumno, nombre, id);
+            DataBase.Alumnos.CreateAsync(nuevoAlumno, nombre, idContadorAlumnos);
+
+            idContadorAlumnos++;
 
             Console.WriteLine($"Alumno {nuevoAlumno.nombre} con el id {nuevoAlumno.id} agregado.");
             Console.WriteLine($"{listaAlumnos.Count()} es el numero total de items en la lista de alumnos");

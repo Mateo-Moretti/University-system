@@ -19,9 +19,10 @@ namespace SistemaDeUniversidad.Persistance.Repositories
             _dataSource = dataSource;
         }
 
-        public Task CreateAsync(Profesor profesor)
+        public async Task CreateAsync(Profesor profesor, string nombre, int id)
         {
-            throw new NotImplementedException();
+            using var cmd = _dataSource.CreateCommand($"INSERT INTO universidad.profesores(nombre, id) VALUES ('{nombre}', '{id}')");
+            await cmd.ExecuteNonQueryAsync();
         }
     }
 }
