@@ -7,12 +7,14 @@ using SistemadeUniversidad;
 
 public class Program
 {
-    static Manager manager = new Manager();
+    public static Dictionary<int, Profesor> diccionarioProfesor = new Dictionary<int, Profesor>();
+    public static Dictionary<int, Alumno> diccionarioAlumnos = new Dictionary<int, Alumno>();
+    public static Dictionary<int, Materia> diccionarioMaterias = new Dictionary<int, Materia>();
 
-    public static List<Alumno> listaAlumnos = new List<Alumno>();
-    public static List<Profesor> listaProfesor = new List<Profesor>();
-    public static int idContadorAlumnos = 1;
+
     public static int idContadorProfesores = 1;
+    public static int idContadorAlumnos = 1;
+    public static int idContadorMaterias = 1;
 
     static void Main()
     {
@@ -72,7 +74,7 @@ public class Program
                     break;
 
                 case "5":
-                    InscribirAlumnoenMateria();
+                    InscribirAlumnoEnMateria();
                     break;
 
                 case "6":
@@ -100,6 +102,7 @@ public class Program
             }           
         }
 
+        
         #region CREADORES
         static void AgregarProfesor()
         {
@@ -117,14 +120,14 @@ public class Program
             }
 
             Profesor nuevoProfesor = new Profesor(nombre, idContadorProfesores);
-            listaProfesor.Add(nuevoProfesor);
+            diccionarioProfesor.Add(idContadorProfesores, nuevoProfesor);
 
             DataBase.Profesores.CreateAsync(nuevoProfesor, nombre, idContadorProfesores);
 
             idContadorProfesores++;
 
             Console.WriteLine($"Profesor {nuevoProfesor.nombre} con el id {nuevoProfesor.id} agregado.");
-            Console.WriteLine($"{listaProfesor.Count()} es el numero total de items en la lista de profesores");
+            Console.WriteLine($"{diccionarioProfesor.Count()} es el numero total de items en la lista de profesores");
         }
     
         static void AgregarAlumno()
@@ -142,46 +145,77 @@ public class Program
                 }
             }
 
-            Alumno nuevoAlumno = new Alumno(nombre, idContadorAlumnos);           
-            listaAlumnos.Add(nuevoAlumno);
+            Alumno nuevoAlumno = new Alumno(nombre, idContadorAlumnos);
+            diccionarioAlumnos.Add(idContadorAlumnos, nuevoAlumno);
 
             DataBase.Alumnos.CreateAsync(nuevoAlumno, nombre, idContadorAlumnos);
 
             idContadorAlumnos++;
 
             Console.WriteLine($"Alumno {nuevoAlumno.nombre} con el id {nuevoAlumno.id} agregado.");
-            Console.WriteLine($"{listaAlumnos.Count()} es el numero total de items en la lista de alumnos");
+            Console.WriteLine($"{diccionarioAlumnos.Count()} es el numero total de items en la lista de alumnos");
         }
         
         static void CrearMateria()
-        {           
-            manager.CrearMaterias();                       
+        {
+            string? nombre = null;
+
+            while (string.IsNullOrEmpty(nombre))
+            {
+                Console.Write("Nombre de la materia: ");
+                nombre = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(nombre))
+                {
+                    Console.WriteLine("Nombre de materia no puede estar vacio");
+                }
+            }
+
+            Materia nuevaMateria = new Materia(nombre, idContadorMaterias);
+            diccionarioMaterias.Add(idContadorMaterias, nuevaMateria);
+
+            DataBase.Materias.CreateAsync(nuevaMateria, nombre, idContadorMaterias);
+
+            idContadorMaterias++;
+
+            Console.WriteLine($"Materia {nuevaMateria.nombre} con id {nuevaMateria.id} agregada.");
+            Console.WriteLine($"{diccionarioMaterias.Count()} es el numero total de items en la lista de materias");
         }
         #endregion
 
+
         #region INSCRIPTORES
-        static void InscribirAlumnoenMateria()
+        static void InscribirAlumnoEnMateria()
         {            
             Console.Write("Nombre del alumno: ");
-            string? nombreAlumno = Console.ReadLine();
+            string nombreAlumno = Console.ReadLine();
 
             Console.Write("ID del alumno: ");
             string? inputAlumno = Console.ReadLine();
-            int? idAlumno = int.Parse(inputAlumno);
+            int idAlumno = int.Parse(inputAlumno);
 
             Console.Write("Nombre de la materia: ");
             string? nombreMateria = Console.ReadLine();
 
             Console.Write("ID de la materia: ");
             string? inputMateria = Console.ReadLine();
-            int? idMateria = int.Parse(inputMateria);
+            int idMateria = int.Parse(inputMateria);
 
-            Alumno? alumno = manager.ChequeoAlumnoExistente(nombreAlumno, idAlumno);
-            Materia? materia = manager.ChequeoMateriaExistente(nombreMateria, idMateria);
+            Alumno? alumno = ChequeoAlumnoExistente(nombreAlumno, idAlumno);
+            Materia? materia = ChequeoMateriaExistente(nombreMateria, idMateria);
 
             if (alumno != null && materia != null)
             {
-               manager.InscribirAlumnoEnMateria(alumno, materia);
+                if (diccionarioMaterias.ContainsKey(idMateria))
+                {
+                    Console.WriteLine($"La materia {materia.nombre} no existe");
+                }
+                if (alumno.ObtenerMateriasInscritas().Count >= 2)
+                {
+                    Console.WriteLine($"El alumno {alumno.nombre} ya esta inscrito en 2 materias.");
+                }
+                alumno.InscribirEnMaterias(materia);
+                Console.WriteLine($"El alumno {alumno.nombre} se ha inscrito en la materia {materia.nombre}");
             }
             else
             {
@@ -204,21 +238,30 @@ public class Program
 
             Console.Write("ID del profesor: ");
             string? inputProfesor = Console.ReadLine();
-            int? idProfesor = int.Parse(inputProfesor);
+            int idProfesor = int.Parse(inputProfesor);
 
             Console.Write("Nombre de la materia: ");
             string? nombreMateria = Console.ReadLine();
 
             Console.Write("ID de la materia: ");
             string? inputMateria = Console.ReadLine();
-            int? idMateria = int.Parse(inputMateria);
+            int idMateria = int.Parse(inputMateria);
 
-            Profesor? profesor = manager.ChequeoProfesorExistente(nombreProfesor, idProfesor);
-            Materia? materia = manager.ChequeoMateriaExistente(nombreMateria, idMateria);
+            Profesor? profesor = ChequeoProfesorExistente(nombreProfesor, idProfesor);
+            Materia? materia = ChequeoMateriaExistente(nombreMateria, idMateria);
 
             if (profesor != null && materia != null)
             {
-                manager.InscribirProfesorEnMateria(profesor, materia);
+                if (diccionarioMaterias.ContainsKey(idMateria))
+                {
+                    Console.WriteLine($"La materia {materia.nombre} no existe");
+                }
+                if (profesor.ObtenerMateriasInscritas().Count >= 2)
+                {
+                    Console.WriteLine($"El alumno {profesor.nombre} ya esta inscrito en 1 materia.");
+                }
+                profesor.InscribirEnMaterias(materia);
+                Console.WriteLine($"El profesor {profesor.nombre} se ha inscrito en la materia {materia.nombre}");
             }
             else
             {
@@ -234,6 +277,58 @@ public class Program
             }
         }
         #endregion
+
+
+        #region CHECKERS
+        static Profesor? ChequeoProfesorExistente(string? nombreIngresado, int? idProfesor)
+        {
+            foreach (var profesorEntry in diccionarioProfesor)
+            {
+                var profesor = profesorEntry.Value;
+
+                if (profesor != null && profesor.nombre == nombreIngresado && profesor.id == idProfesor)
+                {
+                    return profesor;
+                }
+            }
+            return null;
+        }
+
+        static Alumno? ChequeoAlumnoExistente(string? nombreIngresado, int? idAlumno)
+        {
+            foreach (var alumnoEntry in diccionarioAlumnos)
+            {
+                var alumno = alumnoEntry.Value;
+
+                if (alumno != null && alumno.nombre == nombreIngresado && alumno.id == idAlumno)
+                {
+                    return alumno;
+                }
+            }
+            return null;
+        }
+
+        static Materia? ChequeoMateriaExistente(string? nombreIngresado, int? idMateria)
+        {
+            foreach (var materiaEntry in diccionarioMaterias)
+            {
+                var materia = materiaEntry.Value;
+
+                if (materia != null && materia.nombre == nombreIngresado && materia.id == idMateria)
+                {
+                    return materia;
+                }
+            }
+            return null;
+        }
+        #endregion
+
+
+
+
+
+
+
 
         static void DesanotarAlumno()
         {

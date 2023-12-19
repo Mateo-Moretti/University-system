@@ -10,6 +10,6 @@ namespace SistemaDeUniversidad.Contracts.Repositories
 {
     public interface IMateriaRepository
     {
-        Task CreateAsync(Materia materia);
+        Task CreateAsync(Materia materia, string nombre, int id);
     }
 }
