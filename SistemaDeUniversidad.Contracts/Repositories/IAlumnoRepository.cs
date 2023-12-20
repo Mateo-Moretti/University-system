@@ -11,5 +11,6 @@ namespace SistemaDeUniversidad.Contracts.Repositories
     {
         Task CreateAsync(Alumno alumno, string nombre, int id);
         Task InscribirAMateria(int idAlumno, int idMateria);
+        Task DesinscribirDeMateria(int idAlumno, int idMateria);
     }
 }

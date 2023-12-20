@@ -25,11 +25,18 @@ namespace SistemaDeUniversidad.Persistance.Repositories
             using var cmd = _dataSource.CreateCommand($"INSERT INTO universidad.alumnos(nombre, id) VALUES ('{nombre}', '{id}')");
             await cmd.ExecuteNonQueryAsync();
         }
-
+  
         public async Task InscribirAMateria(int idAlumno, int idMateria)
         {
             using var cmd = _dataSource.CreateCommand($"INSERT INTO universidad.alumnos_cursan(alumno_id, materia_id) VALUES ('{idAlumno}', '{idMateria}')");
             await cmd.ExecuteNonQueryAsync();
         }
+
+        public async Task DesinscribirDeMateria(int idAlumno, int idMateria)
+        {
+            using var cmd = _dataSource.CreateCommand($"DELETE FROM universidad.alumnos_cursan WHERE alumno_id = {idAlumno} AND materia_id = {idMateria}");
+            await cmd.ExecuteNonQueryAsync();
+        }
+
     }
 }

@@ -18,6 +18,11 @@ namespace SistemadeUniversidad.Contracts.Models
             listaMateriasInscritas.Add(materia);          
         }
 
+        public void DesinscribirDeMaterias(Materia materia)
+        {
+            listaMateriasInscritas.Remove(materia);
+        }
+
         public List<Materia> ObtenerMateriasInscritas()
         {
             return listaMateriasInscritas;

@@ -214,7 +214,7 @@ public class Program
                 {
                     Console.WriteLine($"El alumno {alumno.nombre} ya esta inscrito en 2 materias.");
                 }
-                alumno.InscribirEnMaterias(materia);
+                alumno.DesinscribirDeMaterias(materia);
                 DataBase.Alumnos.InscribirAMateria(idAlumno, idMateria);
                 Console.WriteLine($"El alumno {alumno.nombre} se ha inscrito en la materia {materia.nombre}");
             }
@@ -281,6 +281,52 @@ public class Program
         #endregion
 
 
+        #region DESINSCRIPTORES
+        static void DesanotarAlumno()
+        {
+            Console.Write("Nombre del alumno: ");
+            string nombreAlumno = Console.ReadLine();
+
+            Console.Write("ID del alumno: ");
+            string? inputAlumno = Console.ReadLine();
+            int idAlumno = int.Parse(inputAlumno);
+
+            Console.Write("Nombre de la materia: ");
+            string? nombreMateria = Console.ReadLine();
+
+            Console.Write("ID de la materia: ");
+            string? inputMateria = Console.ReadLine();
+            int idMateria = int.Parse(inputMateria);
+
+            Alumno? alumno = ChequeoAlumnoExistente(nombreAlumno, idAlumno);
+            Materia? materia = ChequeoMateriaExistente(nombreMateria, idMateria);
+
+            if (alumno != null && materia != null)
+            {
+                if (diccionarioMaterias.ContainsKey(idMateria))
+                {
+                    Console.WriteLine($"La materia {materia.nombre} no existe");
+                }
+                alumno.DesinscribirDeMaterias(materia);
+                DataBase.Alumnos.DesinscribirDeMateria(idAlumno, idMateria);
+                Console.WriteLine($"El alumno {alumno.nombre} se ha desinscrito de la materia {materia.nombre}");
+            }
+            else
+            {
+                if (alumno == null)
+                {
+                    Console.WriteLine("El alumno ingresado no existe.");
+                }
+
+                if (materia == null)
+                {
+                    Console.WriteLine("La materia ingresada no existe.");
+                }
+            }
+        }
+        #endregion
+
+
         #region CHECKERS
         static Profesor? ChequeoProfesorExistente(string? nombreIngresado, int? idProfesor)
         {
@@ -325,12 +371,6 @@ public class Program
         }
         #endregion
 
-
-
-        static void DesanotarAlumno()
-        {
-
-        }
 
         static void DatosProfesor()
         {
