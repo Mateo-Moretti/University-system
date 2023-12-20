@@ -28,5 +28,17 @@ namespace SistemadeUniversidad.Contracts.Models
             return listaMateriasInscritas;
         }
 
+        public bool CheckYaInscripto(Materia materia)
+        {
+            if (listaMateriasInscritas.Contains(materia))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

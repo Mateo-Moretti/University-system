@@ -127,7 +127,6 @@ public class Program
             idContadorProfesores++;
 
             Console.WriteLine($"Profesor {nuevoProfesor.nombre} con el id {nuevoProfesor.id} agregado.");
-            Console.WriteLine($"{diccionarioProfesor.Count()} es el numero total de items en la lista de profesores");
         }
     
         static void AgregarAlumno()
@@ -153,7 +152,6 @@ public class Program
             idContadorAlumnos++;
 
             Console.WriteLine($"Alumno {nuevoAlumno.nombre} con el id {nuevoAlumno.id} agregado.");
-            Console.WriteLine($"{diccionarioAlumnos.Count()} es el numero total de items en la lista de alumnos");
         }
         
         static void CrearMateria()
@@ -179,7 +177,6 @@ public class Program
             idContadorMaterias++;
 
             Console.WriteLine($"Materia {nuevaMateria.nombre} con id {nuevaMateria.id} agregada.");
-            Console.WriteLine($"{diccionarioMaterias.Count()} es el numero total de items en la lista de materias");
         }
         #endregion
 
@@ -206,7 +203,7 @@ public class Program
 
             if (alumno != null && materia != null)
             {
-                if (diccionarioMaterias.ContainsKey(idMateria))
+                if (!diccionarioMaterias.ContainsKey(idMateria))
                 {
                     Console.WriteLine($"La materia {materia.nombre} no existe");
                 }
@@ -214,9 +211,17 @@ public class Program
                 {
                     Console.WriteLine($"El alumno {alumno.nombre} ya esta inscrito en 2 materias.");
                 }
-                alumno.DesinscribirDeMaterias(materia);
-                DataBase.Alumnos.InscribirAMateria(idAlumno, idMateria);
-                Console.WriteLine($"El alumno {alumno.nombre} se ha inscrito en la materia {materia.nombre}");
+                if (alumno.CheckYaInscripto(materia) is true)
+                {
+                    Console.WriteLine($"El alumno {alumno.nombre} ya esta inscrito en esta materia.");
+                }
+                else
+                {
+                    alumno.InscribirEnMaterias(materia);
+                    materia.InscribirAlumno(alumno);
+                    DataBase.Alumnos.InscribirAMateria(idAlumno, idMateria);
+                    Console.WriteLine($"El alumno {alumno.nombre} se ha inscrito en la materia {materia.nombre}");
+                }
             }
             else
             {
@@ -253,17 +258,25 @@ public class Program
 
             if (profesor != null && materia != null)
             {
-                if (diccionarioMaterias.ContainsKey(idMateria))
+                if (!diccionarioMaterias.ContainsKey(idMateria))
                 {
                     Console.WriteLine($"La materia {materia.nombre} no existe");
                 }
-                if (profesor.ObtenerMateriasInscritas().Count >= 2)
+                if (profesor.ObtenerMateriasInscritas().Count >= 1)
                 {
-                    Console.WriteLine($"El alumno {profesor.nombre} ya esta inscrito en 1 materia.");
+                    Console.WriteLine($"El profesor {profesor.nombre} ya esta inscrito en 1 materia.");
                 }
-                profesor.InscribirEnMaterias(materia);
-                DataBase.Profesores.InscribirAMateria(idProfesor, idMateria);
-                Console.WriteLine($"El profesor {profesor.nombre} se ha inscrito en la materia {materia.nombre}");
+                if (profesor.CheckYaInscripto(materia) is true)
+                {
+                    Console.WriteLine($"El profesor {profesor.nombre} ya esta inscrito en esta materia.");
+                }
+                else
+                {
+                    profesor.InscribirEnMaterias(materia);
+                    materia.InscribirProfesor(profesor);
+                    DataBase.Profesores.InscribirAMateria(idProfesor, idMateria);
+                    Console.WriteLine($"El profesor {profesor.nombre} se ha inscrito en la materia {materia.nombre}");
+                }
             }
             else
             {
@@ -308,6 +321,7 @@ public class Program
                     Console.WriteLine($"La materia {materia.nombre} no existe");
                 }
                 alumno.DesinscribirDeMaterias(materia);
+                materia.DesinscribirAlumnoDeMaterias(alumno);
                 DataBase.Alumnos.DesinscribirDeMateria(idAlumno, idMateria);
                 Console.WriteLine($"El alumno {alumno.nombre} se ha desinscrito de la materia {materia.nombre}");
             }
@@ -371,22 +385,136 @@ public class Program
         }
         #endregion
 
-
+        #region DATOS
         static void DatosProfesor()
         {
+            Console.Write("Nombre del profesor: ");
+            string? nombreProfesor = Console.ReadLine();
 
+            Console.Write("ID del profesor: ");
+            string? inputProfesor = Console.ReadLine();
+            int idProfesor = int.Parse(inputProfesor);
+
+            Profesor? profesor = ChequeoProfesorExistente(nombreProfesor, idProfesor);
+
+            if (profesor != null)
+            {
+                List<Materia> materiasInscritas = profesor.ObtenerMateriasInscritas();
+
+                if (materiasInscritas.Count > 0)
+                {
+                    Console.WriteLine($"Materias de {profesor.nombre}:");
+                    foreach (var materia in materiasInscritas)
+                    {
+                        Console.WriteLine($"ID: {materia.id}, Nombre: {materia.nombre}");
+
+                        Console.WriteLine($"Alumnos inscritos en {materia.nombre}:");
+                        foreach (var alumno in materia.ObtenerAlumnosInscritos())
+                        {
+                            Console.WriteLine($"ID: {alumno.id}, Nombre: {alumno.nombre}");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"El profesor {profesor.nombre} no está inscrito en ninguna materia.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("El profesor ingresado no existe.");
+            }
         }
 
         static void DatosAlumno()
         {
+            Console.Write("Nombre del alumno: ");
+            string? nombreAlumno = Console.ReadLine();
 
+            Console.Write("ID del alumno: ");
+            string? inputAlumno = Console.ReadLine();
+            int idAlumno = int.Parse(inputAlumno);
+
+            Alumno? alumno = ChequeoAlumnoExistente(nombreAlumno, idAlumno);
+
+            if (alumno != null)
+            {
+                List<Materia> materiasInscritas = alumno.ObtenerMateriasInscritas();
+
+                if (materiasInscritas.Count > 0)
+                {
+                    Console.WriteLine($"Materias que {alumno.nombre} cursa:");
+                    foreach (var materia in materiasInscritas)
+                    {
+                        Console.WriteLine($"ID: {materia.id}, Nombre: {materia.nombre}");
+
+                        Console.WriteLine($"Profesor de la materia {materia.nombre}:");
+                        foreach (var profesor in materia.ObtenerProfesoresInscritos())
+                        {
+                            Console.WriteLine($"ID: {profesor.id}, Nombre: {profesor.nombre}");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"El alumno {alumno.nombre} no está inscrito en ninguna materia.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("El alumno ingresado no existe.");
+            }
         }
 
         static void DatosMateria()
-        {            
-            
+        {
+            Console.Write("Nombre de la materia: ");
+            string? nombreMateria = Console.ReadLine();
+
+            Console.Write("ID de la materia: ");
+            string? inputMateria = Console.ReadLine();
+            int idMateria = int.Parse(inputMateria);
+
+            Materia? materia = ChequeoMateriaExistente(nombreMateria, idMateria);
+
+            if (materia != null)
+            {
+                List<Alumno> alumnosInscriptos = materia.ObtenerAlumnosInscritos();
+                List<Profesor> profesorInscriptos = materia.ObtenerProfesoresInscritos();
+
+                if (alumnosInscriptos.Count > 0)
+                {
+                    Console.WriteLine($"Alumnos cursan {materia.nombre}:");
+                    foreach (var alumnos in alumnosInscriptos)
+                    {
+                        Console.WriteLine($"ID: {alumnos.id}, Nombre: {alumnos.nombre}");                                       
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"La materia {materia.nombre} no está siendo cursada por ningun alumno.");
+                }
+
+                if(profesorInscriptos.Count > 0)
+                {
+                    Console.WriteLine($"Profesor que da {materia.nombre}:");
+                    foreach (var profesor in materia.ObtenerProfesoresInscritos())
+                    {
+                        Console.WriteLine($"ID: {profesor.id}, Nombre: {profesor.nombre}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"La materia {materia.nombre} no está siendo dada por ningun profesor.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("La materia ingresada no existe.");
+            }
         }
-    
+        #endregion
+
     }
 }
 
