@@ -1,0 +1,15 @@
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\bin\Debug\net6.0\SistemaDeUniversidad.Services.deps.json
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\bin\Debug\net6.0\SistemaDeUniversidad.Services.dll
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\bin\Debug\net6.0\SistemaDeUniversidad.Services.pdb
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\bin\Debug\net6.0\SistemaDeUniversidad.Contracts.dll
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\bin\Debug\net6.0\SistemaDeUniversidad.Contracts.pdb
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\obj\Debug\net6.0\SistemaDeUniversidad.Services.csproj.AssemblyReference.cache
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\obj\Debug\net6.0\SistemaDeUniversidad.Services.GeneratedMSBuildEditorConfig.editorconfig
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\obj\Debug\net6.0\SistemaDeUniversidad.Services.AssemblyInfoInputs.cache
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\obj\Debug\net6.0\SistemaDeUniversidad.Services.AssemblyInfo.cs
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\obj\Debug\net6.0\SistemaDeUniversidad.Services.csproj.CoreCompileInputs.cache
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\obj\Debug\net6.0\SistemaDeUniversidad.Services.csproj.CopyComplete
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\obj\Debug\net6.0\SistemaDeUniversidad.Services.dll
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\obj\Debug\net6.0\refint\SistemaDeUniversidad.Services.dll
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\obj\Debug\net6.0\SistemaDeUniversidad.Services.pdb
+B:\Users\mateo\Desktop\Mio\TAREA5 Universidad\SistemaDeUniversidad.Services\obj\Debug\net6.0\ref\SistemaDeUniversidad.Services.dll

@@ -1,12 +1,7 @@
 ﻿using SistemadeUniversidad.Contracts.Models;
 using SistemaDeUniversidad.Contracts.Repositories;
 using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
+
 
 namespace SistemaDeUniversidad.Persistance.Repositories
 {
@@ -38,5 +33,6 @@ namespace SistemaDeUniversidad.Persistance.Repositories
             await cmd.ExecuteNonQueryAsync();
         }
 
+   
     }
 }

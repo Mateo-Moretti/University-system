@@ -10,7 +10,8 @@
         "dependencies": {
           "Npgsql": "8.0.1",
           "SistemaDeUniversidad.Contracts": "1.0.0",
-          "SistemaDeUniversidad.Persistance": "1.0.0"
+          "SistemaDeUniversidad.Persistance": "1.0.0",
+          "SistemaDeUniversidad.Services": "1.0.0"
         },
         "runtime": {
           "SistemaDeUniversidad.dll": {}
@@ -105,6 +106,14 @@
         "runtime": {
           "SistemaDeUniversidad.Persistance.dll": {}
         }
+      },
+      "SistemaDeUniversidad.Services/1.0.0": {
+        "dependencies": {
+          "SistemaDeUniversidad.Contracts": "1.0.0"
+        },
+        "runtime": {
+          "SistemaDeUniversidad.Services.dll": {}
+        }
       }
     }
   },
@@ -169,6 +178,11 @@
       "sha512": ""
     },
     "SistemaDeUniversidad.Persistance/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SistemaDeUniversidad.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

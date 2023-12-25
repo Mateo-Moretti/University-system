@@ -24,5 +24,6 @@ namespace SistemaDeUniversidad.Persistance.Repositories
             using var cmd = _dataSource.CreateCommand($"INSERT INTO universidad.materias(nombre, id) VALUES ('{nombre}', '{id}')");
             await cmd.ExecuteNonQueryAsync();
         }
+
     }
 }

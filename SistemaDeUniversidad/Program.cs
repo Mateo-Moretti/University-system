@@ -4,6 +4,8 @@ using SistemadeUniversidad.Contracts;
 using SistemadeUniversidad.Contracts.Models;
 using SistemaDeUniversidad.Persistance;
 using SistemadeUniversidad;
+using SistemaDeUniversidad.Services;
+using SistemaDeUniversidad.Contracts.Services;
 
 public class Program
 {
@@ -200,6 +202,9 @@ public class Program
 
             Alumno? alumno = ChequeoAlumnoExistente(nombreAlumno, idAlumno);
             Materia? materia = ChequeoMateriaExistente(nombreMateria, idMateria);
+            MateriaService materiaService = new MateriaService();
+
+            AlumnoService alumnoSerice = new AlumnoService();
 
             if (alumno != null && materia != null)
             {
@@ -207,18 +212,18 @@ public class Program
                 {
                     Console.WriteLine($"La materia {materia.nombre} no existe");
                 }
-                if (alumno.ObtenerMateriasInscritas().Count >= 2)
+                if (alumnoSerice.ObtenerMateriasInscritas().Count >= 2)
                 {
                     Console.WriteLine($"El alumno {alumno.nombre} ya esta inscrito en 2 materias.");
                 }
-                if (alumno.CheckYaInscripto(materia) is true)
+                if (alumnoSerice.CheckYaInscripto(materia) is true)
                 {
                     Console.WriteLine($"El alumno {alumno.nombre} ya esta inscrito en esta materia.");
                 }
                 else
                 {
-                    alumno.InscribirEnMaterias(materia);
-                    materia.InscribirAlumno(alumno);
+                    alumnoSerice.InscribirEnMaterias(materia);
+                    materiaService.InscribirAlumno(alumno);
                     DataBase.Alumnos.InscribirAMateria(idAlumno, idMateria);
                     Console.WriteLine($"El alumno {alumno.nombre} se ha inscrito en la materia {materia.nombre}");
                 }
@@ -255,6 +260,8 @@ public class Program
 
             Profesor? profesor = ChequeoProfesorExistente(nombreProfesor, idProfesor);
             Materia? materia = ChequeoMateriaExistente(nombreMateria, idMateria);
+            MateriaService materiaService = new MateriaService();
+            ProfesorService profesorService = new ProfesorService();
 
             if (profesor != null && materia != null)
             {
@@ -262,18 +269,18 @@ public class Program
                 {
                     Console.WriteLine($"La materia {materia.nombre} no existe");
                 }
-                if (profesor.ObtenerMateriasInscritas().Count >= 1)
+                if (profesorService.ObtenerMateriasInscritas().Count >= 1)
                 {
                     Console.WriteLine($"El profesor {profesor.nombre} ya esta inscrito en 1 materia.");
                 }
-                if (profesor.CheckYaInscripto(materia) is true)
+                if (profesorService.CheckYaInscripto(materia) is true)
                 {
                     Console.WriteLine($"El profesor {profesor.nombre} ya esta inscrito en esta materia.");
                 }
                 else
                 {
-                    profesor.InscribirEnMaterias(materia);
-                    materia.InscribirProfesor(profesor);
+                    profesorService.InscribirEnMaterias(materia);
+                    materiaService.InscribirProfesor(profesor);
                     DataBase.Profesores.InscribirAMateria(idProfesor, idMateria);
                     Console.WriteLine($"El profesor {profesor.nombre} se ha inscrito en la materia {materia.nombre}");
                 }
@@ -313,6 +320,9 @@ public class Program
 
             Alumno? alumno = ChequeoAlumnoExistente(nombreAlumno, idAlumno);
             Materia? materia = ChequeoMateriaExistente(nombreMateria, idMateria);
+            MateriaService materiaService = new MateriaService();
+            AlumnoService alumnoSerice = new AlumnoService();
+
 
             if (alumno != null && materia != null)
             {
@@ -320,8 +330,8 @@ public class Program
                 {
                     Console.WriteLine($"La materia {materia.nombre} no existe");
                 }
-                alumno.DesinscribirDeMaterias(materia);
-                materia.DesinscribirAlumnoDeMaterias(alumno);
+                alumnoSerice.DesinscribirDeMaterias(materia);
+                materiaService.DesinscribirAlumnoDeMaterias(alumno);
                 DataBase.Alumnos.DesinscribirDeMateria(idAlumno, idMateria);
                 Console.WriteLine($"El alumno {alumno.nombre} se ha desinscrito de la materia {materia.nombre}");
             }
@@ -385,6 +395,7 @@ public class Program
         }
         #endregion
 
+
         #region DATOS
         static void DatosProfesor()
         {
@@ -396,10 +407,12 @@ public class Program
             int idProfesor = int.Parse(inputProfesor);
 
             Profesor? profesor = ChequeoProfesorExistente(nombreProfesor, idProfesor);
+            MateriaService materiaService = new MateriaService();
+            ProfesorService profesorService = new ProfesorService();
 
             if (profesor != null)
             {
-                List<Materia> materiasInscritas = profesor.ObtenerMateriasInscritas();
+                List<Materia> materiasInscritas = profesorService.ObtenerMateriasInscritas();
 
                 if (materiasInscritas.Count > 0)
                 {
@@ -409,7 +422,7 @@ public class Program
                         Console.WriteLine($"ID: {materia.id}, Nombre: {materia.nombre}");
 
                         Console.WriteLine($"Alumnos inscritos en {materia.nombre}:");
-                        foreach (var alumno in materia.ObtenerAlumnosInscritos())
+                        foreach (var alumno in materiaService.ObtenerAlumnosInscritos())
                         {
                             Console.WriteLine($"ID: {alumno.id}, Nombre: {alumno.nombre}");
                         }
@@ -436,10 +449,12 @@ public class Program
             int idAlumno = int.Parse(inputAlumno);
 
             Alumno? alumno = ChequeoAlumnoExistente(nombreAlumno, idAlumno);
+            MateriaService materiaService = new MateriaService();
+            AlumnoService alumnoSerice = new AlumnoService();
 
             if (alumno != null)
             {
-                List<Materia> materiasInscritas = alumno.ObtenerMateriasInscritas();
+                List<Materia> materiasInscritas = alumnoSerice.ObtenerMateriasInscritas();
 
                 if (materiasInscritas.Count > 0)
                 {
@@ -449,7 +464,7 @@ public class Program
                         Console.WriteLine($"ID: {materia.id}, Nombre: {materia.nombre}");
 
                         Console.WriteLine($"Profesor de la materia {materia.nombre}:");
-                        foreach (var profesor in materia.ObtenerProfesoresInscritos())
+                        foreach (var profesor in materiaService.ObtenerProfesoresInscritos())
                         {
                             Console.WriteLine($"ID: {profesor.id}, Nombre: {profesor.nombre}");
                         }
@@ -476,11 +491,12 @@ public class Program
             int idMateria = int.Parse(inputMateria);
 
             Materia? materia = ChequeoMateriaExistente(nombreMateria, idMateria);
+            MateriaService materiaService = new MateriaService();
 
             if (materia != null)
             {
-                List<Alumno> alumnosInscriptos = materia.ObtenerAlumnosInscritos();
-                List<Profesor> profesorInscriptos = materia.ObtenerProfesoresInscritos();
+                List<Alumno> alumnosInscriptos = materiaService.ObtenerAlumnosInscritos();
+                List<Profesor> profesorInscriptos = materiaService.ObtenerProfesoresInscritos();
 
                 if (alumnosInscriptos.Count > 0)
                 {
@@ -498,7 +514,7 @@ public class Program
                 if(profesorInscriptos.Count > 0)
                 {
                     Console.WriteLine($"Profesor que da {materia.nombre}:");
-                    foreach (var profesor in materia.ObtenerProfesoresInscritos())
+                    foreach (var profesor in materiaService.ObtenerProfesoresInscritos())
                     {
                         Console.WriteLine($"ID: {profesor.id}, Nombre: {profesor.nombre}");
                     }

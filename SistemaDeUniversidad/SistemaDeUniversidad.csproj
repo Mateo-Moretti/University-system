@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SistemaDeUniversidad.Contracts\SistemaDeUniversidad.Contracts.csproj" />
     <ProjectReference Include="..\SistemaDeUniversidad.Persistance\SistemaDeUniversidad.Persistance.csproj" />
+    <ProjectReference Include="..\SistemaDeUniversidad.Services\SistemaDeUniversidad.Services.csproj" />
   </ItemGroup>
 
 </Project>

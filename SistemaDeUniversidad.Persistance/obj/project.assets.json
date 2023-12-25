@@ -458,11 +458,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Persistance\\SistemaDeUniversidad.Persistance.csproj",
+      "projectUniqueName": "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad.Persistance\\SistemaDeUniversidad.Persistance.csproj",
       "projectName": "SistemaDeUniversidad.Persistance",
-      "projectPath": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Persistance\\SistemaDeUniversidad.Persistance.csproj",
+      "projectPath": "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad.Persistance\\SistemaDeUniversidad.Persistance.csproj",
       "packagesPath": "C:\\Users\\mateo\\.nuget\\packages\\",
-      "outputPath": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Persistance\\obj\\",
+      "outputPath": "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad.Persistance\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -483,8 +483,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Contracts\\SistemaDeUniversidad.Contracts.csproj": {
-              "projectPath": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Contracts\\SistemaDeUniversidad.Contracts.csproj"
+            "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad.Contracts\\SistemaDeUniversidad.Contracts.csproj": {
+              "projectPath": "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad.Contracts\\SistemaDeUniversidad.Contracts.csproj"
             }
           }
         }

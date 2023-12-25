@@ -9,30 +9,9 @@ namespace SistemadeUniversidad.Contracts.Models
 {
     public class Profesor : Persona
     {
-        private List<Materia> listaMateriasInscritas = new List<Materia>();
-
-        public Profesor(string nombre, int id) : base(nombre, id){}
-
-        public void InscribirEnMaterias(Materia materia)
+        public Profesor(string nombre, int id) : base(nombre, id)
         {
-            listaMateriasInscritas.Add(materia);
-        }
 
-        public List<Materia> ObtenerMateriasInscritas()
-        {
-            return listaMateriasInscritas;
-        }
-
-        public bool CheckYaInscripto(Materia materia)
-        {
-            if (listaMateriasInscritas.Contains(materia))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
     }
 }

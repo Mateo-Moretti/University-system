@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaDeUniversidad.Contra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaDeUniversidad.Persistance", "SistemaDeUniversidad.Persistance\SistemaDeUniversidad.Persistance.csproj", "{2A40E3F0-6217-4122-AC6A-FBF6B8D45ED5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaDeUniversidad.Services", "SistemaDeUniversidad.Services\SistemaDeUniversidad.Services.csproj", "{E640115D-562B-453A-B6BA-2ADF14EA2CA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2A40E3F0-6217-4122-AC6A-FBF6B8D45ED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A40E3F0-6217-4122-AC6A-FBF6B8D45ED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A40E3F0-6217-4122-AC6A-FBF6B8D45ED5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E640115D-562B-453A-B6BA-2ADF14EA2CA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E640115D-562B-453A-B6BA-2ADF14EA2CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E640115D-562B-453A-B6BA-2ADF14EA2CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E640115D-562B-453A-B6BA-2ADF14EA2CA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

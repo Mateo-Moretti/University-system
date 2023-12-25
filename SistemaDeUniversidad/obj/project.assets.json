@@ -159,6 +159,19 @@
         "runtime": {
           "bin/placeholder/SistemaDeUniversidad.Persistance.dll": {}
         }
+      },
+      "SistemaDeUniversidad.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "SistemaDeUniversidad.Contracts": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SistemaDeUniversidad.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SistemaDeUniversidad.Services.dll": {}
+        }
       }
     }
   },
@@ -462,13 +475,19 @@
       "type": "project",
       "path": "../SistemaDeUniversidad.Persistance/SistemaDeUniversidad.Persistance.csproj",
       "msbuildProject": "../SistemaDeUniversidad.Persistance/SistemaDeUniversidad.Persistance.csproj"
+    },
+    "SistemaDeUniversidad.Services/1.0.0": {
+      "type": "project",
+      "path": "../SistemaDeUniversidad.Services/SistemaDeUniversidad.Services.csproj",
+      "msbuildProject": "../SistemaDeUniversidad.Services/SistemaDeUniversidad.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Npgsql >= 8.0.1",
       "SistemaDeUniversidad.Contracts >= 1.0.0",
-      "SistemaDeUniversidad.Persistance >= 1.0.0"
+      "SistemaDeUniversidad.Persistance >= 1.0.0",
+      "SistemaDeUniversidad.Services >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -478,11 +497,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj",
+      "projectUniqueName": "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj",
       "projectName": "SistemaDeUniversidad",
-      "projectPath": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj",
+      "projectPath": "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad\\SistemaDeUniversidad.csproj",
       "packagesPath": "C:\\Users\\mateo\\.nuget\\packages\\",
-      "outputPath": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad\\obj\\",
+      "outputPath": "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -503,11 +522,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Contracts\\SistemaDeUniversidad.Contracts.csproj": {
-              "projectPath": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Contracts\\SistemaDeUniversidad.Contracts.csproj"
+            "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad.Contracts\\SistemaDeUniversidad.Contracts.csproj": {
+              "projectPath": "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad.Contracts\\SistemaDeUniversidad.Contracts.csproj"
             },
-            "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Persistance\\SistemaDeUniversidad.Persistance.csproj": {
-              "projectPath": "B:\\Users\\mateo\\Desktop\\TAREA5 Universidad\\SistemaDeUniversidad.Persistance\\SistemaDeUniversidad.Persistance.csproj"
+            "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad.Persistance\\SistemaDeUniversidad.Persistance.csproj": {
+              "projectPath": "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad.Persistance\\SistemaDeUniversidad.Persistance.csproj"
+            },
+            "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad.Services\\SistemaDeUniversidad.Services.csproj": {
+              "projectPath": "B:\\Users\\mateo\\Desktop\\Mio\\TAREA5 Universidad\\SistemaDeUniversidad.Services\\SistemaDeUniversidad.Services.csproj"
             }
           }
         }
