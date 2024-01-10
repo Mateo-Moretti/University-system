@@ -164,7 +164,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "SistemaDeUniversidad.Contracts": "1.0.0"
+          "SistemaDeUniversidad.Contracts": "1.0.0",
+          "SistemaDeUniversidad.Persistance": "1.0.0"
         },
         "compile": {
           "bin/placeholder/SistemaDeUniversidad.Services.dll": {}

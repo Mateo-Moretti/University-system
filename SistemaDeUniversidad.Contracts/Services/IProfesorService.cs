@@ -9,8 +9,17 @@ namespace SistemaDeUniversidad.Contracts.Services
 {
     public interface IProfesorService
     {
-        void InscribirEnMaterias(Materia materia);
-        List<Materia> ObtenerMateriasInscritas();
-        bool CheckYaInscripto(Materia materia);
+        Task<Profesor> CreateAsync(string name);
+
+        Task<Profesor> UpdateAsync(int id, string name);
+
+        Task DeleteAsync(int id);
+
+        Task<Profesor> GetByIdAsync(int id);
+
+        Task<IEnumerable<Profesor>> GetAllAsync();
+
+        Task<IEnumerable<Course>> GetCoursesAsync(int id);
+
     }
 }

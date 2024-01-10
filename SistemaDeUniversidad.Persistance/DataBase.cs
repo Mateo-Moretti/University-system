@@ -10,20 +10,35 @@ using SistemadeUniversidad.Contracts.Models;
 
 namespace SistemaDeUniversidad.Persistance
 {
-    public static class DataBase
+    public  class DataBase : IDisposable
     {
-        private static readonly NpgsqlDataSource _dataSource;
+        private static DataBase? instance = null;
+        private readonly NpgsqlDataSource _dataSource;
+        public IStudentRepository Students { get; private set; }
+        public ICourseRepository Courses { get; private set; }
+        public IProfesorRepository Profesors { get; private set; }
 
-        static DataBase()
+        private DataBase()
         {
             _dataSource = NpgsqlDataSource.Create("Host=127.0.0.1;Username=postgres;Password=2007;Database=postgres");
-            Alumnos = new AlumnoRepository(_dataSource);
-            Materias = new MateriaRepository(_dataSource);
-            Profesores = new ProfesorRepository(_dataSource);
+            Students = new StudentRepository(_dataSource);
+            Courses = new CourseRepository(_dataSource);
+            Profesors = new ProfesorRepository(_dataSource);
         }
 
-        public static IAlumnoRepository Alumnos { get; private set; }
-        public static IMateriaRepository Materias { get; private set; }
-        public static IProfesorRepository Profesores { get; private set; }
+        public void Dispose()
+        {
+            _dataSource.Dispose();
+        }
+
+        public static DataBase GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new DataBase();
+            }
+
+            return instance;
+        }
     }
 }

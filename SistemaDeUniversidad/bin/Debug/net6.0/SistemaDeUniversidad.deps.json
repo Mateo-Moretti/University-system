@@ -109,7 +109,8 @@
       },
       "SistemaDeUniversidad.Services/1.0.0": {
         "dependencies": {
-          "SistemaDeUniversidad.Contracts": "1.0.0"
+          "SistemaDeUniversidad.Contracts": "1.0.0",
+          "SistemaDeUniversidad.Persistance": "1.0.0"
         },
         "runtime": {
           "SistemaDeUniversidad.Services.dll": {}

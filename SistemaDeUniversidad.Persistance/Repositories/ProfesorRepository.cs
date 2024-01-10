@@ -1,34 +1,53 @@
 ﻿using SistemadeUniversidad.Contracts.Models;
 using SistemaDeUniversidad.Contracts.Repositories;
 using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaDeUniversidad.Persistance.Repositories
 {
     //ACA SE GUARDA TODO LO QUE TENGA QUE VER CON LA TABLA PROFESORES EN ANTARES (SQL)
-    public class ProfesorRepository : IProfesorRepository
+    internal class ProfesorRepository : BaseRepository<Profesor>, IProfesorRepository
     {
-        private readonly NpgsqlDataSource _dataSource;
+        public ProfesorRepository(NpgsqlDataSource dataSource) : base(dataSource) { }
 
-        public ProfesorRepository(NpgsqlDataSource dataSource)
+
+        public override Task CreateAsync(Profesor entity)
         {
-            _dataSource = dataSource;
+            throw new NotImplementedException();
         }
 
-        public async Task CreateAsync(Profesor profesor, string nombre, int id)
+        public override Task DeleteAsync(int id)
         {
-            using var cmd = _dataSource.CreateCommand($"INSERT INTO universidad.profesores(nombre, id) VALUES ('{nombre}', '{id}')");
-            await cmd.ExecuteNonQueryAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task InscribirAMateria(int idProfesor, int idMateria)
+        public Task<bool> ExistsByIdAsync(int id)
         {
-            using var cmd = _dataSource.CreateCommand($"INSERT INTO universidad.profesores_dictan(profesor_id, materia_id) VALUES ('{idProfesor}', '{idMateria}')");
-            await cmd.ExecuteNonQueryAsync();
+            throw new NotImplementedException();
+        }
+
+        public override Task<IEnumerable<Profesor>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Profesor>> GetByCourseAsync(int courseID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Task<Profesor?> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Task UpdateAsync(Profesor entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override Profesor MapRowToModel(NpgsqlDataReader reader)
+        {
+            throw new NotImplementedException();
         }
     }
 }

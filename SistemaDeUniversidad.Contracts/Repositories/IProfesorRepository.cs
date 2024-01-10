@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace SistemaDeUniversidad.Contracts.Repositories
 {
-    public interface IProfesorRepository
+    public interface IProfesorRepository : IRepository<Profesor>
     {
-        Task CreateAsync(Profesor profesor, string nombre, int id);
-        Task InscribirAMateria(int idProfesor, int idMateria);
+        Task<bool> ExistsByIdAsync(int id);
+
+        Task<List<Profesor>> GetByCourseAsync(int courseID);
     }
 }

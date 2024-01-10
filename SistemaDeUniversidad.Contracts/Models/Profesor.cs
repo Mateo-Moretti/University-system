@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SistemaDeUniversidad.Contracts;
+using SistemaDeUniversidad.Contracts.Models;
 
 namespace SistemadeUniversidad.Contracts.Models
 {
-    public class Profesor : Persona
+    public class Profesor : Person
     {
-        public Profesor(string nombre, int id) : base(nombre, id)
+        public Profesor(string Name, int? Id = null) : base(Name, Id)
         {
 
         }
