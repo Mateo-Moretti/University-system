@@ -5,12 +5,10 @@ namespace SistemaDeUniversidad.API.DTO.Requests
     public class CourseCreateDTO
     {
         public string Name { get; init; }
-        public int Id { get; init; }
 
-        public CourseCreateDTO(string name, int id)
+        public CourseCreateDTO(string name)
         {
             Name = name;
-            Id = id;
         }
     }
 }

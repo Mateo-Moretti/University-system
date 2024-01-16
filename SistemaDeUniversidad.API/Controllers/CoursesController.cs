@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SistemadeUniversidad.Contracts.Models;
+using SistemaDeUniversidad.API.DTO.Requests;
 using SistemaDeUniversidad.API.DTO.Responses;
+using SistemadeUniversidad.Contracts.Models;
 using SistemaDeUniversidad.Contracts.Services;
 using SistemaDeUniversidad.Services;
-using SistemaDeUniversidad.API.DTO;
-using SistemaDeUniversidad.API.DTO.Requests;
-using System.Xml.Linq;
 using System.ComponentModel.DataAnnotations;
 
 namespace SistemaDeUniversidad.API.Controllers
@@ -29,62 +27,33 @@ namespace SistemaDeUniversidad.API.Controllers
 
         // GET 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CoursesDTO>> GetAsync(int id)
+        public async Task<CoursesDTO> GetAsync(int id)
         {          
-            try
-            {
-                return ToDTO(await courseService.GetByIdAsync(id));
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-
+            return ToDTO(await courseService.GetByIdAsync(id));
         }
 
         // POST
         [HttpPost]
-        public async Task<ActionResult<CoursesDTO>> PostAsync([FromBody] CourseCreateDTO dto)
-        {
-            try
-            {
-                return ToDTO(await courseService.CreateAsync(dto.Name));
-            }
-            catch (ValidationException ex)
-            {
-                return BadRequest(ex.Message); 
-            }
+        public async Task<CoursesDTO> PostAsync([FromBody] CourseCreateDTO dto)
+        {          
+            return ToDTO(await courseService.CreateAsync(dto.Name));           
         }
 
         // PUT
         [HttpPut("{id}")]
-        public async Task<ActionResult<CoursesDTO>> PutAsync(int id, [FromBody] CourseCreateDTO dto)
+        public async Task<CoursesDTO> PutAsync(int id, [FromBody] CourseCreateDTO dto)
         {
-            try
-            {
-                return ToDTO(await courseService.UpdateAsync(id, dto.Name));
-            }
-            catch (FileNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
+            return ToDTO(await courseService.UpdateAsync(id, dto.Name));
         }
 
         //DELETE por id
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            try
-            {
-                await courseService.DeleteAsync(id);
-                return NoContent();
-            }
-            catch (FileNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
+            await courseService.DeleteAsync(id);
         }
 
+        /*
         //Anotar alumno
         [HttpPost("{courseId}/students")]
         public async Task<ActionResult> EnrollStudent(int courseId, [FromBody] StudentEnrollDTO dto)
@@ -114,7 +83,7 @@ namespace SistemaDeUniversidad.API.Controllers
                 return NotFound(ex.Message);
             }
         }
-
+        */
         internal static CoursesDTO ToDTO(Course c)
         {
             return new CoursesDTO(c.Id, c.Name);

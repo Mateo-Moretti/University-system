@@ -3,12 +3,10 @@
     public class StudentUpdateDTO
     {
         public string Name { get; init; }
-        public string Id { get; init; }
 
-        public StudentUpdateDTO(string name, string id)
+        public StudentUpdateDTO(string name)
         {
             Name = name;
-            Id = id;
         }
     }
 }

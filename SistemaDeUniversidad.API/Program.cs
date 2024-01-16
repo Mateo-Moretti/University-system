@@ -1,3 +1,5 @@
+using SistemaDeUniversidad.API.Middlewares;
+
 namespace SistemaDeUniversidad.API
 {
     public class Program
@@ -14,6 +16,8 @@ namespace SistemaDeUniversidad.API
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

@@ -4,15 +4,11 @@ namespace SistemaDeUniversidad.API.DTO.Requests
 {
     public class ProfesorCreateDTO
     {
-        [Required]
         public string Name { get; init; }
-        [Required]
-        public int Id { get; init; }
 
-        public ProfesorCreateDTO(string name, int id)
+        public ProfesorCreateDTO(string name)
         {
             Name = name;
-            Id = id;
         }
     }
 }
