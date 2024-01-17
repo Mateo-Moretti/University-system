@@ -8,6 +8,18 @@ namespace SistemaDeUniversidad.Contracts.Exceptions
 {
     public class KeyNotFoundExceptionMW : Exception
     {
+        public string Message;
+
         public int Code { get; protected set; } = 404;
+
+        public KeyNotFoundExceptionMW(string message)
+        {
+            this.Message = message;
+        }
+
+        public KeyNotFoundExceptionMW()
+        {
+
+        }
     }
 }

@@ -1,48 +1,85 @@
 ﻿using SistemadeUniversidad.Contracts.Models;
+using SistemaDeUniversidad.Contracts.Exceptions;
 using SistemaDeUniversidad.Contracts.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SistemaDeUniversidad.Persistance;
 
 namespace SistemaDeUniversidad.Services
 {
     public class StudentService : IStudentService
     {
-        public Task<Student> CreateAsync(string name)
+        private void ValidateStudent(string name)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new BadRequestExceptionMW();
+            }
         }
 
-        public Task<Student> UpdateAsync(int id, string name)
+        //GET ALL
+        public async Task<IEnumerable<Student>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await DataBase.GetInstance().Students.GetAllAsync();
         }
 
-        public Task DeleteAsync(int id)
+        //GET
+        public async Task<Student> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await DataBase.GetInstance().Students.GetByIdAsync(id)
+                 ?? throw new KeyNotFoundExceptionMW("Id does not exist");
         }
 
-        public Task<Student> GetByIdAsync(int id)
+        //POST
+        public async Task<Student> CreateAsync(string name)
         {
-            throw new NotImplementedException();
+            ValidateStudent(name);
+
+            Student Student = new Student(name);
+            await DataBase.GetInstance().Students.CreateAsync(Student);
+
+            return Student;
         }
 
-        public Task<IEnumerable<Student>> GetAllAsync()
+        //PUT
+        public async Task<Student> UpdateAsync(int id, string name)
         {
-            throw new NotImplementedException();
+            ValidateStudent(name);
+
+            Student student = await GetByIdAsync(id);
+
+            student.Name = name;
+
+            await DataBase.GetInstance().Students.UpdateAsync(student);
+
+            return student;
         }
 
-        public Task<Student> CreateAsync(string name, int Id)
+        //DELETE
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await DataBase.GetInstance().Students.DeleteAsync(id);
+            }
+            catch (InvalidOperationException)
+            {
+                throw new KeyNotFoundExceptionMW("Id does not exist");
+            }
         }
 
-        public Task<IEnumerable<Course>> GetCoursesAsync(int id)
+
+        //TODAVIA NO EN USO
+
+        //Ver cursos inscriptos
+        public async Task<IEnumerable<Course>> GetCoursesAsync(int id)
         {
-            throw new NotImplementedException();
+            if (!await DataBase.GetInstance().Courses.ExistsByIdAsync(id))
+            {
+                throw new KeyNotFoundException("The Id does not correspond to any course");
+            }
+
+            IEnumerable<Course> courseList = await DataBase.GetInstance().Courses.GetByStudentAsync(id);
+
+            return courseList;
         }
     }
 }

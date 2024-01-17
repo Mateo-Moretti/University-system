@@ -4,7 +4,6 @@ using SistemaDeUniversidad.API.DTO.Responses;
 using SistemadeUniversidad.Contracts.Models;
 using SistemaDeUniversidad.Contracts.Services;
 using SistemaDeUniversidad.Services;
-using System.ComponentModel.DataAnnotations;
 
 namespace SistemaDeUniversidad.API.Controllers
 {
@@ -19,6 +18,7 @@ namespace SistemaDeUniversidad.API.Controllers
             courseService = new CourseService();
         }
 
+        // GET ALL
         [HttpGet]
         public async Task<IEnumerable<CoursesDTO>> GetAllAsync()
         {

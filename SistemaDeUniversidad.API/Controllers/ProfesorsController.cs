@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.AspNetCore.Mvc;
-using SistemadeUniversidad.Contracts.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using SistemaDeUniversidad.API.DTO.Requests;
 using SistemaDeUniversidad.API.DTO.Responses;
+using SistemadeUniversidad.Contracts.Models;
 using SistemaDeUniversidad.Contracts.Services;
 using SistemaDeUniversidad.Services;
-using System.ComponentModel.DataAnnotations;
 
 namespace SistemaDeUniversidad.API.Controllers
 {
@@ -20,6 +18,7 @@ namespace SistemaDeUniversidad.API.Controllers
             profesorService = new ProfesorService();
         }
 
+        // GET ALL
         [HttpGet]
         public async Task<IEnumerable<ProfesorDTO>> GetAllAsync()
         {
@@ -28,62 +27,31 @@ namespace SistemaDeUniversidad.API.Controllers
 
         // GET 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProfesorDTO>> GetAsync(int id)
+        public async Task<ProfesorDTO> GetAsync(int id)
         {
-            try
-            {
-                return ToDTO(await profesorService.GetByIdAsync(id));
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-
+           return ToDTO(await profesorService.GetByIdAsync(id));
         }
 
         // POST
         [HttpPost]
-        public async Task<ActionResult<ProfesorDTO>> PostAsync([FromBody] ProfesorCreateDTO dto)
+        public async Task<ProfesorDTO> PostAsync([FromBody] ProfesorCreateDTO dto)
         {
-            try
-            {
-                return ToDTO(await profesorService.CreateAsync(dto.Name));
-            }
-            catch (ValidationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return ToDTO(await profesorService.CreateAsync(dto.Name));
         }
 
         // PUT
         [HttpPut("{id}")]
-        public async Task<ActionResult<ProfesorDTO>> PutAsync(int id, [FromBody] ProfesorCreateDTO dto)
+        public async Task<ProfesorDTO> PutAsync(int id, [FromBody] ProfesorCreateDTO dto)
         {
-            try
-            {
-                return ToDTO(await profesorService.UpdateAsync(id, dto.Name));
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
+           return ToDTO(await profesorService.UpdateAsync(id, dto.Name));
         }
 
         //DELETE por id
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            try
-            {
-                await profesorService.DeleteAsync(id);
-                return NoContent();
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
+           await profesorService.DeleteAsync(id);
         }
-
 
         internal static ProfesorDTO ToDTO(Profesor p)
         {

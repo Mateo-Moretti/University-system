@@ -25,7 +25,7 @@ namespace SistemaDeUniversidad.Services
         public async Task<Course> GetByIdAsync(int id)
         {
             return await DataBase.GetInstance().Courses.GetByIdAsync(id)
-                 ?? throw new KeyNotFoundExceptionMW();
+                 ?? throw new KeyNotFoundExceptionMW("Id does not exist");
         }
 
         //POST
@@ -62,7 +62,7 @@ namespace SistemaDeUniversidad.Services
             }
             catch (InvalidOperationException)
             {
-                throw new KeyNotFoundExceptionMW();
+                throw new KeyNotFoundExceptionMW("Id does not exist");
             }
         }
 

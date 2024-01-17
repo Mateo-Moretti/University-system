@@ -1,15 +1,9 @@
 ﻿using SistemadeUniversidad.Contracts.Models;
 using SistemaDeUniversidad.Contracts.Repositories;
 using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaDeUniversidad.Persistance.Repositories
 {
-    //ACA SE GUARDA TODO LO QUE TENGA QUE VER CON LA TABLA MATERIAS EN ANTARES (SQL)
     internal class CourseRepository : BaseRepository<Course>, ICourseRepository
     {
         public CourseRepository(NpgsqlDataSource dataSource) : base(dataSource) { }
@@ -41,20 +35,6 @@ namespace SistemaDeUniversidad.Persistance.Repositories
             return null;
         }
 
-        public async Task<List<Course>> GetByNameAsync(string name)
-        {
-            string query = "SELECT * FROM universidad.courses WHERE name ILIKE $1%"; 
-
-            using NpgsqlDataReader reader = await GetQueryReaderAsync(query, new object[] { name });
-
-            var listaCourses = new List<Course>();
-
-            while (reader.Read())
-            {
-                listaCourses.Add(MapRowToModel(reader));
-            }
-            return listaCourses;
-        }
 
         public override async Task UpdateAsync(Course entity)
         {
@@ -83,6 +63,27 @@ namespace SistemaDeUniversidad.Persistance.Repositories
             return new Course(
                     (string)reader["name"],
                     (int)reader["id"]);
+        }
+
+
+
+
+
+        // NOT YET IN USE
+
+        public async Task<List<Course>> GetByNameAsync(string name)
+        {
+            string query = "SELECT * FROM universidad.courses WHERE name ILIKE $1%"; 
+
+            using NpgsqlDataReader reader = await GetQueryReaderAsync(query, new object[] { name });
+
+            var listaCourses = new List<Course>();
+
+            while (reader.Read())
+            {
+                listaCourses.Add(MapRowToModel(reader));
+            }
+            return listaCourses;
         }
 
         public Task<List<Course>> GetByStudentAsync(int studentID)
